@@ -1,0 +1,43 @@
+
+sensor_name: visir/viirs
+
+composites:
+
+  green_snow:
+    compositor: !!python/name:satpy.composites.GenericCompositor
+    prerequisites:
+    - name: M10
+      modifiers: [sunz_corrected]
+    - name: M05
+      modifiers: [sunz_corrected]
+    - name: M15
+    standard_name: green_snow
+
+  greensnow_with_fog:
+    compositor: !!python/name:satpy.composites.DayNightCompositor
+    standard_name: greensnow_with_fog
+    prerequisites:
+      - green_snow
+      - night_fog
+      - name: solar_zenith_angle
+        resolution: 742
+
+  green_snow_legacy:
+    compositor: !!python/name:satpy.composites.GenericCompositor
+    prerequisites:
+    - name: M10
+      modifiers: [sunz_corrected]
+    - name: M07
+      modifiers: [sunz_corrected]
+    - name: M15
+    standard_name: green_snow
+
+  ndvi:
+    compositor: !!python/name:satpy_cpe.NDVICompositor
+    prerequisites:
+    - name: M05
+      modifiers: [sunz_corrected]
+    - name: M07
+      modifiers: [sunz_corrected]
+    standard_name: ndvi
+
