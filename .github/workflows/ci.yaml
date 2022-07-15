@@ -5,7 +5,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number }}-${{ github.event.type }}
   cancel-in-progress: true
 
-on: [push, pull_request]
+on:
+  push: {}
+  pull_request: {}
+  schedule:
+    # Every Saturday at midnight UTC
+    - cron: '0 0 * * 7'
+
 
 jobs:
   satpy_compat:
@@ -18,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
