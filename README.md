@@ -44,3 +44,16 @@ This project contains five types of files and directories in addition to this RE
    recommended in your own projects to avoid committing unwanted files to git.
 
 See the Satpy Plugin Documentation linked above.
+
+## Contributing
+
+If you think you've found a bug or have a question about this repository please
+file a bug on the Satpy repository:
+
+https://github.com/pytroll/satpy/issues
+
+If you would like to contribute changes to this example project, please create
+a fork of the project, create a new branch, commit your changes to it, and then
+create a pull request.
+
+https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
