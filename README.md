@@ -31,7 +31,7 @@ to reinstall the package by running the above command again.
 This project contains five types of files and directories in addition to this README:
 
 1. ``pyproject.toml``: The package and entry point definitions. You could also
-   implement this in a ``setup.py`` 
+   implement this in a ``setup.py`` not shown here.
 2. ``satpy_cpe``: The plugin Python package.
 3. ``satpy_cpe/etc``: The plugin component configuration directory where custom
    YAML files are stored.
