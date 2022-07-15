@@ -28,4 +28,6 @@ setup(
         ],
     },
     package_data={'satpy_cpe': [os.path.join('etc', 'composites/*.yaml')]},
+    install_requires=["satpy"],
+    python_require=">=3.8",
 )
