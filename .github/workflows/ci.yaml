@@ -6,11 +6,11 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push: {}
-  pull_request: {}
+  push:
+  pull_request:
   schedule:
     # Every Saturday at midnight UTC
-    - cron: '0 0 * * 7'
+    - cron: '0 0 * * 6'
 
 
 jobs:
