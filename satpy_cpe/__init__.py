@@ -1,36 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (c) 2015-2019 Satpy developers
-#
-# This file is part of satpy.
-#
-# satpy is free software: you can redistribute it and/or modify it under the
-# terms of the GNU General Public License as published by the Free Software
-# Foundation, either version 3 of the License, or (at your option) any later
-# version.
-#
-# satpy is distributed in the hope that it will be useful, but WITHOUT ANY
-# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-# A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along with
-# satpy.  If not, see <http://www.gnu.org/licenses/>.
-"""Some example compositor."""
+# Copyright (c) 2015-2022 Satpy developers
+"""Init module to define this directory as a python package.."""
 
-from satpy.composites import GenericCompositor
-from satpy.dataset import combine_metadata
-
-
-class NDVICompositor(GenericCompositor):
-    """NDVI compositor."""
-
-    def __call__(self, projectables, **kwargs):
-        """Generate the ndvi."""
-        # Check that the datasets match
-        projectables = self.match_data_arrays(projectables)
-
-        vis06, vis08 = projectables
-        ndvi = (vis08 - vis06) / (vis08 + vis06)
-        ndvi.attrs = combine_metadata(vis08, vis06)
-
-        return super(NDVICompositor, self).__call__([ndvi], **kwargs)
+# Convenience import of custom NDVICompositor so YAML configuration can
+# use the shorter module name: satpy_cpe.NDVICompositor
+from .custom_ndvi import NDVICompositor  # noqa
