@@ -42,4 +42,4 @@ jobs:
       - name: Check Satpy Composite Detection
         run: |
           cd /tmp
-          python -c "from satpy.composites.config_load import load_compositor_configs_for_sensors as load_comps; assert any('my_ndvi' == data_id['name'] for data_id in load_compositor_configs_for_sensors({'viirs'})[0]['viirs'].keys())"
+          python -c "from satpy.composites.config_loader import load_compositor_configs_for_sensors as load_comps; assert any('my_ndvi' == data_id['name'] for data_id in load_comps({'viirs'})[0]['viirs'].keys())"
