@@ -21,7 +21,7 @@ from setuptools import setup
 import os
 
 setup(
-    name='satpy_cpe',
+    name='satpy-cpe',
     entry_points={
         'satpy.composites': [
             'example_composites = satpy_cpe',
