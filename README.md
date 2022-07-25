@@ -65,9 +65,9 @@ Disclaimer: We are not lawyers.
 Satpy source code is under the GPLv3 license. This license requires any
 derivative works to also be GPLv3 or GPLv3 compatible. It is our understanding
 that importing a Python module could be considered "linking" that source code
-to your own and would therefore require your code to be licensed with a
-GPLv3-compatible license. It is currently only possible to make a
-Satpy-compatible plugin without importing Satpy if it
+to your own (thus being a derivative work) and would therefore require your
+code to be licensed with a GPLv3-compatible license. It is currently only
+possible to make a Satpy-compatible plugin without importing Satpy if it
 contains only enhancements. Writers and compositors are possible without
 subclassing, but are likely difficult to implement. Readers are even more
 difficult to implement without using Satpy's base classes and utilities.
