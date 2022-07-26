@@ -1,0 +1,20 @@
+[project]
+name = "satpy-cpe"
+description = "Example package providing a Satpy plugin with custom composites."
+version = "1.0.0"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+requires-python = ">=3.8"
+dependencies = [
+    "satpy",
+]
+
+[tool.setuptools]
+packages = ["satpy_cpe"]
+
+[project.entry-points."satpy.composites"]
+example_composites = "satpy_cpe"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

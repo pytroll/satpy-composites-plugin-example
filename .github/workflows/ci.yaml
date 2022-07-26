@@ -1,0 +1,46 @@
+name: CI
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#concurrency
+# https://docs.github.com/en/developers/webhooks-and-events/events/github-event-types#pullrequestevent
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}-${{ github.event.type }}
+  cancel-in-progress: true
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Every Saturday at midnight UTC
+    - cron: '0 0 * * 6'
+
+
+jobs:
+  satpy_compat:
+    name: Check Compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        # TODO: Remove pyorbital after next Satpy 0.37.0 is released
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 flake8-docstrings flake8-debugger flake8-bugbear pyorbital
+
+      - name: Install Plugin
+        run: |
+          pip install -e .
+
+      - name: Run linting
+        run: |
+          flake8 satpy_cpe/
+
+      - name: Check Satpy Composite Detection
+        run: |
+          cd /tmp
+          python -c "from satpy.composites.config_loader import load_compositor_configs_for_sensors as load_comps; assert any('my_ndvi' == data_id['name'] for data_id in load_comps({'viirs'})[0]['viirs'].keys())"
