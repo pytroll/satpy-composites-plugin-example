@@ -35,6 +35,7 @@ jobs:
       - name: Install Plugin
         run: |
           pip install -e .
+          pip install --no-deps -U git+https://github.com/pytroll/satpy.git
 
       - name: Run linting
         run: |
