@@ -16,5 +16,5 @@ packages = ["satpy_cpe"]
 example_composites = "satpy_cpe"
 
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=64.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
